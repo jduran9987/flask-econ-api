@@ -48,4 +48,4 @@ jobs:
           context: .
           push: true
           repository: jduran9987/flask-econ-api
-          tags: latest, ${{ github.run_number }}
+          tags: latest, ${{ github.run_number }} 
