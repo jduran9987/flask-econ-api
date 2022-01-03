@@ -45,11 +45,13 @@ jobs:
 
       - name: Build docker image
         run: |
-          docker build -t jduran9987/flask-econ-api .
+          docker build -t jduran9987/flask-econ-api:latest .
 
       - name: Push unique docker image
+        env: 
+          GITHUB_RUN_NUMBER: ${{ github.run_number }}
         run: |
-          docker push jduran9987/flask-econ-api:${{ github.run_number }}
+          docker push jduran9987/flask-econ-api:$GITHUB_RUN_NUMBER
       
       - name: Push latest docker image
         run: |
