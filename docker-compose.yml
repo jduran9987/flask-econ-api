@@ -1,0 +1,25 @@
+version: '3.1'
+
+services:
+  nginx:
+    image: nginx:1.13.7
+    ports:
+      - 80:80
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+    networks:
+      - my-network
+    depends_on:
+      - flask
+
+  flask:
+    image: jduran9987/flask-econ-api:latest
+    container_name: flask 
+    networks:
+      my-network:
+        aliases:
+          - flask-app
+
+networks:
+  my-network:
+    
